@@ -474,7 +474,7 @@ async fn vary_header_on_all_handled_responses() {
         .insert_header((header::ACCESS_CONTROL_REQUEST_METHOD, "GET"))
         .to_srv_request();
     let resp = test::call_service(&cors, req).await;
-    assert_eq!(resp.status(), StatusCode::OK);
+    assert_eq!(resp.status(), StatusCode::NO_CONTENT);
     assert!(resp
         .headers()
         .contains_key(header::ACCESS_CONTROL_ALLOW_METHODS));
@@ -597,7 +597,7 @@ async fn test_allow_any_origin_any_method_any_header() {
         .to_srv_request();
 
     let resp = test::call_service(&cors, req).await;
-    assert_eq!(resp.status(), StatusCode::OK);
+    assert_eq!(resp.status(), StatusCode::NO_CONTENT);
 }
 
 #[actix_web::test]

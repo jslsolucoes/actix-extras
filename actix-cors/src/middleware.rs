@@ -73,7 +73,7 @@ impl<S> CorsMiddleware<S> {
             return req.error_response(err);
         }
 
-        let mut res = HttpResponse::Ok();
+        let mut res = HttpResponse::NoContent();
 
         if let Some(origin) = inner.access_control_allow_origin(req.head()) {
             res.insert_header((header::ACCESS_CONTROL_ALLOW_ORIGIN, origin));

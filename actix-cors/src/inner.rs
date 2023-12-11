@@ -395,7 +395,7 @@ mod test {
             .insert_header((header::ACCESS_CONTROL_REQUEST_METHOD, "POST"))
             .to_srv_request();
         let resp = test::call_service(&cors, req).await;
-        assert_eq!(resp.status(), StatusCode::OK);
+        assert_eq!(resp.status(), StatusCode::NO_CONTENT);
 
         let req = TestRequest::default()
             .method(Method::GET)
